@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Gate Pass Form</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="demo.css">
+  
+</head>
+<body>
+
+  <div class="form-container">
+    <h3 class="fw-bold mb-4">Gate Pass Form</h3>
+    <form id="gatePassForm">
+
+      <div class="row-item">
+        <label for="date">Date</label>
+        <div class="input-group-flex">
+          <div class="control-with-hint">
+            <input type="date" id="date" class="form-control" />
+            <small>Date</small>
+          </div>
+          <div class="control-with-hint">
+            <input type="time" id="time" class="form-control time-control" />
+            <small>Hour Minutes</small>
+          </div>
+          <div class="control-with-hint">
+            <select id="ampm" class="form-select time-control">
+              <option value="">AM/PM</option>
+              <option>AM</option>
+              <option>PM</option>
+            </select>
+            <small>&nbsp;</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="row-item">
+        <label for="duration">Expected Duration</label>
+        <div class="input-group-flex">
+          <div class="control-with-hint" style="max-width:380px;">
+            <input type="text" id="duration" class="form-control" placeholder="ex: 30 minutes" />
+            <small>in minutes</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="row-item">
+        <label for="empFirst">Employee Name</label>
+        <div class="input-group-flex">
+          <div class="control-with-hint">
+            <input type="text" id="empFirst" class="form-control" placeholder="First Name" />
+            <small>First Name</small>
+          </div>
+          <div class="control-with-hint">
+            <input type="text" id="empLast" class="form-control" placeholder="Last Name" />
+            <small>Last Name</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="row-item">
+        <label for="empEmail">Employee Email</label>
+        <div class="input-group-flex">
+          <div class="control-with-hint" style="max-width:380px;">
+            <input type="email" id="empEmail" class="form-control" placeholder="example@example.com" />
+            <small>example@example.com</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="row-item">
+        <label for="department">Department</label>
+        <div class="input-group-flex">
+          <div class="control-with-hint" style="max-width:380px;">
+            <input type="text" id="department" class="form-control" />
+            <small>&nbsp;</small>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="row-item">
+        <label for="visitorFirst">Visitor Name</label>
+        <div class="input-group-flex">
+          <div class="control-with-hint">
+            <input type="text" id="visitorFirst" class="form-control" placeholder="First Name" />
+            <small>First Name</small>
+          </div>
+          <div class="control-with-hint">
+            <input type="text" id="visitorLast" class="form-control" placeholder="Last Name" />
+            <small>Last Name</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="row-item">
+        <label for="visitorEmail">Email</label>
+        <div class="input-group-flex">
+          <div class="control-with-hint" style="max-width:380px;">
+            <input type="email" id="visitorEmail" class="form-control" placeholder="example@example.com" />
+            <small>example@example.com</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="row-item">
+        <label for="phone">Phone Number</label>
+        <div class="input-group-flex">
+          <div class="control-with-hint" style="max-width:380px;">
+            <input type="tel" id="phone" class="form-control" placeholder="(000) 000-0000" />
+            <small>Please enter a valid phone number.</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="row-item" style="margin-top:18px;">
+        <label>&nbsp;</label>
+        <div>
+          <button type="submit" class="btn btn-success me-2">Submit</button>
+          <button type="reset" class="btn btn-secondary">Reset</button>
+        </div>
+      </div>
+
+      <p id="successMsg" class="text-success mt-3" style="display:none;">Form submitted successfully!</p>
+    </form>
+  </div>
+
+  <script>
+    let form = document.getElementById("gatePassForm");
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      let date = document.getElementById("date").value.trim();
+      let time = document.getElementById("time").value.trim();
+      let ampm = document.getElementById("ampm").value.trim();
+      let duration = document.getElementById("duration").value.trim();
+      let empFirst = document.getElementById("empFirst").value.trim();
+      let empEmail = document.getElementById("empEmail").value.trim();
+      let dept = document.getElementById("department").value.trim();
+      let visitorFirst = document.getElementById("visitorFirst").value.trim();
+      let visitorEmail = document.getElementById("visitorEmail").value.trim();
+      let phone = document.getElementById("phone").value.trim();
+      if (!date || !time || !ampm || !duration || !empFirst || !empEmail || !dept || !visitorFirst || !visitorEmail || !phone) {
+        alert("Please fill all required fields.");
+      } else {
+        document.getElementById("successMsg").style.display = "block";
+        console.log("Gate Pass Form Submitted", { date, time, ampm, duration, empFirst, empEmail, dept, visitorFirst, visitorEmail, phone });
+      }
+    });
+  </script>
+
+</body>
+</html>
